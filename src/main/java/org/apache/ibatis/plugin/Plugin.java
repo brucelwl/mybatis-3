@@ -49,7 +49,7 @@ public class Plugin implements InvocationHandler {
     Class<?> type = target.getClass();
     Class<?>[] interfaces = getAllInterfaces(type, signatureMap);
     if (interfaces.length > 0) {
-      if (Proxy.isProxyClass(target.getClass())) {
+      if (Proxy.isProxyClass(type)) {
         InvocationHandler invocationHandler = Proxy.getInvocationHandler(target);
         if (invocationHandler instanceof Plugin) {
           Map<Method, List<Interceptor>> interceptorMap = ((Plugin) invocationHandler).getInterceptorMap();
